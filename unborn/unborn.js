@@ -120,13 +120,14 @@ path.tension = .5;
 var geometry = new THREE.TubeGeometry( path, 300, 5, 32, false );
 
 //create image texture
-var texture = new THREE.TextureLoader().load( '../media/organic-tunnel.jpeg', function ( texture ) {
+// var texture = new THREE.TextureLoader().load( '../media/organic-tunnel.jpeg', function ( texture ) {
+var texture = new THREE.TextureLoader().load( '/media/organic-tunnel.jpeg', function ( texture ) { //update media paths for vercel
     texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
     texture.offset.set(0, 0);
     texture.repeat.set(3, 1);
 });
 
-var bloodtexture = new THREE.TextureLoader().load( '../media/blood-texture.jpeg', function ( texture ) {
+var bloodtexture = new THREE.TextureLoader().load( '/media/blood-texture.jpeg', function ( texture ) {
   bloodtexture.wrapS = bloodtexture.wrapT = THREE.RepeatWrapping;
   bloodtexture.offset.set(0, 0);
   bloodtexture.repeat.set(2, 1);
@@ -135,7 +136,7 @@ var bloodtexture = new THREE.TextureLoader().load( '../media/blood-texture.jpeg'
 //create local video texture
 var localVideo = document.getElementById('localVideo');
 var localVideoTexture = new THREE.VideoTexture(localVideo);
-localVideo.src = '../media/tunnel.mp4';
+localVideo.src = '/media/tunnel.mp4';
 localVideo.play(); 
 // localVideoTexture.wrapS = texture.wrapT = THREE.RepeatWrapping;
 // localVideoTexture.repeat.set(3, 1); //for tube texture
@@ -555,7 +556,7 @@ masterTimeline.to(camera.position, {
 
 
 //Create particles (stars) system =========================================
-var ovumTexture = new THREE.TextureLoader().load('../media/ovum.png');
+var ovumTexture = new THREE.TextureLoader().load('/media/ovum.png');
 var particleSystem1, particleSystem2, particleSystem3;
 
 // create particle systems
