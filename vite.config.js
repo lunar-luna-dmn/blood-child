@@ -13,5 +13,6 @@ export default {
   },
   optimizeDeps: {
     include: ['three']
-  }
+  },
+  publicDir: 'public'
 }
