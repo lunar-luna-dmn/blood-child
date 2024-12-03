@@ -14,7 +14,8 @@ body{
   justify-content: center;
   align-items: center;
   font-family: Geneva, Tahoma, sans-serif;
-  font-size: 3em;
+  /* font-size: 3em; */
+  font-size: clamp(1rem, 2vw, 2rem); /* this sets a minimum, preferred, and maximum size */
   color: white;
   user-select: none;
 }
@@ -79,7 +80,7 @@ body{
   border-radius: 50px;
   color: white;
   text-decoration: none;
-  font-size: 0.9em;
+  font-size: 0.8em;
   transition: all 0.3s ease;
 }
 
