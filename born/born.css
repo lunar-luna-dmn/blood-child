@@ -1,0 +1,105 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+#container {
+    position: absolute;
+    width: 99vw;
+    height: 99vh;
+}
+
+.text-container {
+    z-index: 1000;
+    position: absolute;
+    width: 99vw;
+    height: 99vh;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: Geneva, Tahoma, sans-serif;
+    font-size: clamp(1rem, 2vw, 2rem);
+    color: white;
+    user-select: none;
+  }
+  
+  .text-div-center {
+    position: absolute;
+    width: 90%;         
+    max-width: 1500px;
+    left: 50%;
+    text-align: center;     
+    transform: translate(-50%, -50%) scale(0.8); 
+    opacity: 0;
+    transition: opacity 0.5s, transform 0.5s;
+  }
+  
+  .text-div-left {
+    position: absolute;
+    width: 80%;
+    max-width: 1500px;   
+    left: 80%;
+    top: 50%;
+    text-align: left;     
+    transform: translate(-50%, -50%) scale(0.8); 
+    transition: opacity 0.5s, transform 0.5s;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .text-div-sp {
+    position: absolute;
+    width: 90%;          
+    max-width: 1000px;
+    left: 30%;         
+    top: 40%;
+    display: flex;
+    flex-direction: column;
+}
+
+.text-div-sp2{
+  position: absolute;
+  width: 90%;          
+  max-width: 1000px;
+  min-height: 500px;
+  left: 20%;         
+  top: 30%;
+  column-gap: 10em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sp2-top{
+  font-style: italic;
+}
+
+.sp2-bottom{
+  text-align: right;
+}
+
+.button-container {
+  margin-top: 2em;
+  display: flex;
+  gap: 2em; 
+  justify-content: center;
+  align-items: center;
+}
+
+.outlined-button {
+  padding: 1em 2em;
+  border: 2px solid white;
+  border-radius: 50px;
+  color: white;
+  text-decoration: none;
+  font-size: 0.8em;
+  transition: all 0.3s ease;
+}
+
+.outlined-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
+}
