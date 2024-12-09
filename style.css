@@ -11,7 +11,7 @@ html, body {
 
 @font-face {
     font-family: 'Gothic'; /* Name of the font */
-    src: url('font/itc-serif-gothic-heavy.otf') format('opentype');
+    src: url('/font/itc-serif-gothic-heavy.otf') format('opentype');
     font-weight: normal; /* Specify the weight */
     font-style: normal; /* Specify the style */
 }
