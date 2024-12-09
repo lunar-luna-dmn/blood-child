@@ -8,10 +8,8 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 import { Linear } from 'gsap'; 
 gsap.registerPlugin(ScrollTrigger);
 import jQuery from 'jquery';
-window.$ = window.jQuery = jQuery; // make jQuery available globally
+window.$ = window.jQuery = jQuery;
 import { WheelAdaptor } from 'three-story-controls'; 
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-
 
 var Mathutils = {
     normalize: function($value, $min, $max) {
@@ -41,7 +39,7 @@ var ww = window.innerWidth,
 var composer, params = {
     exposure: 1.3,
     bloomStrength: .9,
-    bloomThreshold: 0, //changed from 0 to 0.1
+    bloomThreshold: 0,
     bloomRadius: 0
   };
 
@@ -192,21 +190,6 @@ var tube = new THREE.Mesh( geometry, material );
 scene.add( tube );
 
 
-//Wireframe / Inner tube =========================================
-// //create a new geometry with a different radius
-// var geometry = new THREE.TubeGeometry( path, 150, 3.4, 32, false );
-// var geo = new THREE.EdgesGeometry( geometry );
-
-// var mat = new THREE.LineBasicMaterial( {
-//   linewidth: .1,
-//   opacity: .1,
-//   transparent: 1
-// } );
-
-// var wireframe = new THREE.LineSegments( geo, mat );
-// scene.add( wireframe );
-
-
 //Create lights in our scene =========================================
 var light = new THREE.PointLight(0xffffff, .35, 4,0);
 light.castShadow = true;
@@ -264,9 +247,6 @@ let texts = [
 
 // Initial state
 gsap.set(texts, { opacity: 0, scale: 0.8 });
-// tube.material.opacity = 0;
-// tube.material.transparent = true;
-
 // Scene 1 timeline
 masterTimeline.to(tubePerc, {
     percent: .96,
@@ -274,7 +254,7 @@ masterTimeline.to(tubePerc, {
     duration: 120,
     onUpdate: function() {
         cameraTargetPercentage = tubePerc.percent;
-        console.log("Scene 1");
+        // console.log("Scene 1");
         // console.log("tubePerc.percent: " + tubePerc.percent);
 
         // update texts based on tube percentage
@@ -395,10 +375,6 @@ let scene2texts = [
 gsap.set(scene2texts, { opacity: 0, scale: 0.8 })
 
 const buttons = document.querySelectorAll('.outlined-button');
-// buttons.forEach(button => {
-//   button.style.visibility = 'hidden';
-//   button.style.opacity = '0';
-// });
 
 gsap.set(buttons, { opacity: 0 });
 
@@ -519,42 +495,6 @@ masterTimeline.to(camera.position, {
   }
 });
 
-//Scene 2 timeline backup
-// masterTimeline.to(camera.position, {
-//   z: 200,
-//   duration: 5,
-//   ease: "power1.inOut",
-//   onStart: function() {
-//     console.log("Scene 2 Start");
-
-//     // Reset camera position
-//     gsap.to(camera.position, {
-//       x: 0,
-//       y: -3,
-//       z: 50,
-//       duration: 5,
-//       ease: "power1.inOut",
-//       onComplete: function() {
-//         // controls.enabled = true; // enable orbit controls
-//       }
-//     });
-    
-//     // // Reset camera rotation (to see the whole tube)
-//     // gsap.to(camera.rotation, {
-//     //   x: 0,
-//     //   // y: 0,
-//     //   y: 3.14, // 180 degrees
-//     //   z: 0,
-//     //   duration: 5,
-//     //   ease: "power1.inOut"
-//     // });
-    
-//     // Stop the camera movement update from the tube
-//     cameraTargetPercentage = 1; // stop the tube camera movement
-//   },
-// });
-
-
 //Create particles (stars) system =========================================
 var ovumTexture = new THREE.TextureLoader().load('/media/ovum.png');
 var particleSystem1, particleSystem2, particleSystem3;
@@ -645,30 +585,14 @@ function render(){
       particleSystem3.rotation.z += 0.0001;
   }
   
-  // // debugging sphere position and camera position
-  // if (sphere) {
-  //     if (Math.random() < 0.01) {
-  //         console.log("Sphere visible:", sphere.visible);
-  //         console.log("Sphere position:", sphere.position);
-  //         console.log("Camera position:", camera.position);
-  //         console.log("Camera group position:", c.position);
-  //         console.log("Camera forward:", new THREE.Vector3(0, 0, -1).applyQuaternion(camera.quaternion));
-  //     }
-  // }
   
   //Render the scene
-  //renderer.render(scene, camera);
   composer.render();
 
   requestAnimationFrame(render);
 }
 requestAnimationFrame(render);
 
-// $('canvas').click(function(){
-//   console.clear();
-//   markers.push(p1);
-//   console.log(JSON.stringify(markers));
-// });
 document.querySelector('canvas').addEventListener('click', function() {
   console.clear();
   markers.push(p1);
@@ -693,48 +617,3 @@ document.addEventListener('mousemove', function(evt) {
   cameraRotationProxyX = Mathutils.map(evt.clientX, 0, window.innerWidth, 3.24, 3.04);
   cameraRotationProxyY = Mathutils.map(evt.clientY, 0, window.innerHeight, -.1, .1);
 });
-
-// // Create coordinates helper =========================================
-// const axesHelper = new THREE.AxesHelper(500); // size 500
-// scene.add(axesHelper);
-
-// // add labels for axes
-// const createAxisLabel = (text, position) => {
-//     const canvas = document.createElement('canvas');
-//     const context = canvas.getContext('2d');
-//     canvas.width = 64;
-//     canvas.height = 32;
-    
-//     context.fillStyle = 'white';
-//     context.font = '24px Arial';
-//     context.fillText(text, 4, 24);
-    
-//     const texture = new THREE.CanvasTexture(canvas);
-//     const material = new THREE.SpriteMaterial({ map: texture });
-//     const sprite = new THREE.Sprite(material);
-//     sprite.position.copy(position);
-//     sprite.scale.set(10, 5, 1);
-    
-//     return sprite;
-// };
-
-// /// create labels
-// const xLabel = createAxisLabel('X', new THREE.Vector3(110, 0, 0));
-// const yLabel = createAxisLabel('Y', new THREE.Vector3(0, 110, 0));
-// const zLabel = createAxisLabel('Z', new THREE.Vector3(0, 0, 110));
-
-// scene.add(xLabel);
-// scene.add(yLabel);
-// scene.add(zLabel);
-
-// Orbit controls =========================================
-const controls = new OrbitControls(camera, renderer.domElement);
-controls.enableDamping = true; // Smooth camera movement
-controls.dampingFactor = 0.05;
-controls.screenSpacePanning = false;
-controls.minDistance = 10;
-controls.maxDistance = 500;
-controls.maxPolarAngle = Math.PI / 1.5; // Limit vertical rotation
-
-// Enable/disable controls based on scene
-controls.enabled = false; // Start with controls disabled during tube scene

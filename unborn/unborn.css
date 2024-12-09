@@ -15,7 +15,7 @@ body{
   align-items: center;
   font-family: "Balthazar", Geneva, Tahoma, sans-serif;
   /* font-size: 3em; */
-  font-size: clamp(1rem, 2.5vw, 2.5rem); /* this sets a minimum, preferred, and maximum size */
+  font-size: clamp(1rem, 2vw, 2rem); /* this sets a minimum, preferred, and maximum size */
   color: white;
   user-select: none;
 }
