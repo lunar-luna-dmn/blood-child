@@ -377,7 +377,7 @@ function setupWheelControls() {
         },
         //step 6
         {
-            cameraPos: { x: 200, y: 50, z: 1000}, //z: 1500
+            cameraPos: { x: 200, y: 50, z: 1000}, 
             effectParams: {
                 speed: 1.5,
                 numBlobs: 40,
@@ -388,13 +388,13 @@ function setupWheelControls() {
         },
         //step 7
         {
-            cameraPos: { x: 0, y: 100, z: 1500 },
+            cameraPos: { x: -100, y: 100, z: 1500 },
             effectParams: {
                 speed: 2,
                 numBlobs: 30,
                 isolation: 5,
-                rotation: false,
-                rotationSpeed: 0
+                rotation: true,
+                rotationSpeed: 0.01
             }
         },
         //step 8
@@ -410,11 +410,11 @@ function setupWheelControls() {
         },
         //step 9
         {
-            cameraPos: { x: 0, y: 100, z: 3500 },
+            cameraPos: { x: -150, y: 100, z: 3500 },
             effectParams: {
                 speed: 2,
                 numBlobs: 30,
-                isolation: 20,
+                isolation: 50,
                 rotation: true,
                 rotationSpeed: 0.02
             }

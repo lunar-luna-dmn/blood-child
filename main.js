@@ -13,8 +13,21 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('text4')
     ];
 
-    gsap.set(texts[0], { opacity: 1, scale: 1 });
-    gsap.set(texts.slice(1), { opacity: 0, scale: 0.8 });
+    // set all texts to be invisible at first
+    texts.forEach(text => {
+        text.style.visibility = 'hidden'; 
+        text.style.opacity = '0'; 
+    });
+
+    // show only text0
+    texts[0].style.visibility = 'visible'; 
+    texts[0].style.opacity = '1'; 
+    gsap.set(texts[0], { scale: 1 });
+    gsap.set(texts.slice(1), { scale: 0.8 }); 
+
+    // hide buttons initially and prevent pointer events
+    const buttons = document.querySelectorAll('.outlined-button');
+    gsap.set(buttons, { opacity: 0, pointerEvents: 'none' });
 
     // Wheel event handler: update text every swipe ====================================================
     let currentIndex = 0;
@@ -24,6 +37,53 @@ document.addEventListener('DOMContentLoaded', () => {
     let lastScrollTime = 0;
     let scrollCooldown = 1500; // ms between scroll events
 
+    function updateTexts() {
+        // Animate current text in
+        gsap.to(texts[currentIndex], {
+            opacity: 1,
+            visibility: 'visible',
+            scale: 1,
+            duration: 1.5,
+            ease: "power2.out",
+            onComplete: () => {
+                isAnimating = false;
+            }
+        });
+
+        // Animate other texts out
+        texts.forEach((text, index) => {
+            if (index !== currentIndex) {
+                gsap.to(text, {
+                    opacity: 0,
+                    scale: 0.8,
+                    duration: 1.5,
+                    ease: "power2.out",
+                    onComplete: () => {
+                        text.style.visibility = 'hidden'; // only hide after animation is complete to make it more smooth
+                    }
+                });
+            }
+        });
+
+        // show buttons and change cursor when at index 4
+        if (currentIndex === 4) {
+            gsap.to(buttons, {
+                opacity: 1,
+                pointerEvents: 'auto',
+                duration: 0.7,
+                ease: "power2.out"
+            });
+        } else {
+            gsap.to(buttons, {
+                opacity: 0,
+                pointerEvents: 'none',
+                duration: 0.7,
+                ease: "power2.out"
+            });
+        }
+    }
+
+    updateTexts(0)
 
     window.addEventListener('wheel', (e) => {
          // prevent scroll if animation is in progress or within cooldown
@@ -44,48 +104,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Scrolling down
                 currentIndex++;
                 updateTexts();
-                console.log(currentIndex, 'down');
+                // console.log(currentIndex, 'down');
             } else if (e.deltaY < 0 && currentIndex > 0) {
                 // Scrolling up
                 currentIndex--;
                 updateTexts();
-                console.log(currentIndex, 'up');
+                // console.log(currentIndex, 'up');
             } else {
                 isAnimating = false;
             }
         }, 10); //timeout delay (ms)
     }, { passive: false });
 
-    function updateTexts() {
-        // Animate current text in
-        gsap.to(texts[currentIndex], {
-            opacity: 1,
-            scale: 1,
-            duration: 0.7,
-            ease: "power2.out",
-            onComplete: () => {
-                isAnimating = false;
-            }
-        });
-
-        // Animate other texts out
-        texts.forEach((text, index) => {
-            if (index !== currentIndex) {
-                gsap.to(text, {
-                    opacity: 0,
-                    scale: 0.8,
-                    duration: 0.7,
-                    ease: "power2.out"
-                });
-            }
-        });
-
-        // change cursor to pointer when on last text
-        const buttons = document.querySelectorAll('.outlined-button');
-        buttons.forEach(button => {
-            button.style.cursor = currentIndex === 4 ? 'pointer' : 'default';
-        });
-    }
 
     // Mouse gradient interaction ==============================================
     const interBubble = document.querySelector('.mouse-interactive');

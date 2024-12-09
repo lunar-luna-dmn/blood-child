@@ -20,31 +20,35 @@ html, body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-family: Geneva, Tahoma, sans-serif;
-    font-size: clamp(1rem, 2vw, 2rem);
+    font-family: "Balthazar", Geneva, Tahoma, sans-serif;
+    font-size: clamp(1rem, 2.5vw, 2.5rem);
     color: white;
     user-select: none;
+    transition: opacity 1s, transform 1s;
   }
   
   .text-div-center {
     position: absolute;
     width: 90%;         
     max-width: 1500px;
-    left: 50%;
+    /* top: 50%;
+    left: 50%; */
     text-align: center;     
-    transform: translate(-50%, -50%) scale(0.8); 
-    opacity: 0;
-    transition: opacity 0.5s, transform 0.5s;
+    /* transform: translate(-50%, -50%) scale(0.8);  */
+    /* opacity: 0; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
   }
   
   .text-div-left {
     position: absolute;
     width: 80%;
     max-width: 1500px;   
-    left: 80%;
-    top: 50%;
+    left: 35%;
+    top: 45%;
     text-align: left;     
-    transform: translate(-50%, -50%) scale(0.8); 
+    /* transform: translate(-50%, -50%) scale(0.8);  */
     transition: opacity 0.5s, transform 0.5s;
     display: flex;
     flex-direction: column;
