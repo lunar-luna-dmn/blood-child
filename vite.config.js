@@ -7,7 +7,8 @@ export default {
       // external: ['three'],
       input: {
         main: './index.html',
-        unborn: './unborn/index.html'
+        unborn: './unborn/index.html',
+        born: './born/index.html'
       }
     }
   },
