@@ -247,7 +247,7 @@ let masterTimeline = gsap.timeline({
       start: "top top",
       end: "bottom 100%",
       scrub: 3,
-      markers: {color: "white"}
+      // markers: {color: "white"}
   }
 });
 
@@ -271,7 +271,7 @@ gsap.set(texts, { opacity: 0, scale: 0.8 });
 masterTimeline.to(tubePerc, {
     percent: .96,
     ease: Linear.easeNone,
-    duration: 120,
+    duration: 500,
     onUpdate: function() {
         cameraTargetPercentage = tubePerc.percent;
         console.log("Scene 1");
@@ -671,8 +671,8 @@ requestAnimationFrame(render);
 // });
 document.querySelector('canvas').addEventListener('click', function() {
   console.clear();
-  markers.push(p1);
-  console.log(JSON.stringify(markers));
+  // markers.push(p1);
+  // console.log(JSON.stringify(markers));
 });
 
 window.addEventListener( 'resize', function () {
