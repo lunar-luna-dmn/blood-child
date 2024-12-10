@@ -2,6 +2,7 @@ html, body {
     margin: 0;
     padding: 0;
     overflow: hidden;
+    overscroll-behavior-y: none 
   }
 
 .scroll-container {
@@ -18,8 +19,6 @@ html, body {
 
 /* Text elements */
 .text-container {
-    /* opacity: 0; */
-    /* visibility: hidden; */
     z-index: 100;
     width: 99vw;
     height: 99vh;
@@ -31,7 +30,7 @@ html, body {
     align-items: center;
     font-family: "Balthazar", serifGeneva, Tahoma, sans-serif;
     /* font-size: 3em; */
-    font-size: clamp(1rem, 2.3vw, 2.3rem); /* this sets a minimum, preferred, and maximum size */
+    font-size: clamp(1rem, 2vw, 2rem); /* this sets a minimum, preferred, and maximum size */
     color: white;
     user-select: none;
     transition: opacity 1s, transform 1s;
@@ -75,7 +74,7 @@ html, body {
 }
 
 #title {
-    font-size: 3em;
+    font-size: 8rem;
     font-family: "Gothic", "Michroma", sans-serif;
     font-weight: 400;
     font-style: normal;
@@ -114,7 +113,7 @@ html, body {
     border-radius: 50px;
     color: white;
     text-decoration: none;
-    font-size: 0.8em;
+    /* font-size: 0.8em; */
     transition: all 0.3s ease;
     /* cursor: pointer; */
 }

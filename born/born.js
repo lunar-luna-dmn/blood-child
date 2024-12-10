@@ -1,10 +1,10 @@
 import * as THREE from 'three';
 import Stats from 'three/addons/libs/stats.module.js';
-import { GUI } from 'three/addons/libs/lil-gui.module.min.js';
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+// import { GUI } from 'three/addons/libs/lil-gui.module.min.js';
+// import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { MarchingCubes } from 'three/addons/objects/MarchingCubes.js';
 import gsap from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
+// import ScrollTrigger from 'gsap/ScrollTrigger';
 import { WheelAdaptor } from 'three-story-controls'; 
 
 let container, stats;
@@ -322,7 +322,7 @@ function setupWheelControls() {
         },
         //step 1
         {
-            cameraPos: { x: 100, y: 0, z: 100}, //{ x: -182, y: 182, z: 400 }
+            cameraPos: { x: 200, y: 0, z: 100}, //{ x: -182, y: 182, z: 400 }
             effectParams: { 
                 speed: 1,
                 numBlobs: 10,

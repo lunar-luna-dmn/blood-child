@@ -2,6 +2,7 @@ html, body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    overscroll-behavior-y: none /* to avoid scroll bounce */
 }
 
 #container {
@@ -21,7 +22,7 @@ html, body {
     justify-content: center;
     align-items: center;
     font-family: "Balthazar", Geneva, Tahoma, sans-serif;
-    font-size: clamp(1rem, 2.3vw, 2.3rem);
+    font-size: clamp(1rem, 2vw, 2rem);
     color: white;
     user-select: none;
     transition: opacity 1s, transform 1s;
@@ -67,11 +68,11 @@ html, body {
 .text-div-sp2{
   position: absolute;
   width: 90%;          
-  max-width: 1000px;
-  min-height: 500px;
+  max-width: 55vw;
+  min-height: 45vh;
   left: 20%;         
-  top: 30%;
-  column-gap: 10em;
+  top: 25%;
+  /* column-gap: 5em; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
