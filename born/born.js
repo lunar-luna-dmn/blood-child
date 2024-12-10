@@ -322,7 +322,7 @@ function setupWheelControls() {
         },
         //step 1
         {
-            cameraPos: { x: 100, y: 0, z: 100}, //{ x: -182, y: 182, z: 400 }
+            cameraPos: { x: 200, y: 0, z: 100}, //{ x: -182, y: 182, z: 400 }
             effectParams: { 
                 speed: 1,
                 numBlobs: 10,
