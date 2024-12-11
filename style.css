@@ -123,6 +123,72 @@ html, body {
     transform: scale(1.05);
 }
 
+.info-button {
+    position: absolute;
+    z-index: 500;
+    top: 20px; 
+    right: 20px; 
+    padding: 15px 20px;
+    color: white;
+    font-size: 1.5rem;
+    font-family: "Gothic", "Michroma", sans-serif;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.info-button:hover {
+    cursor: pointer;
+}
+
+/* info page modal */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; /* enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+    background-color: #340000;
+    margin: 5% auto; /* 15% from the top and centered */
+    padding: 3em;
+    border: 2px solid white;
+    border-radius: 50px;
+    color: white;
+    width: 70%;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-title{
+    font-family: "Gothic", "Michroma", sans-serif;
+    font-size: 2rem;
+}
+
+.modal-text{
+    font-family: "Balthazar", serifGeneva, Tahoma, sans-serif;
+    font-size: clamp(1rem, 1.5vw, 1.5rem); /* this sets a minimum, preferred, and maximum size */
+    color: white;
+    user-select: none;
+}
+
 /* Background gradients and animations */
 :root {
     --color-bg1: rgb(0, 0, 0);
