@@ -5,6 +5,19 @@ html, body {
   overscroll-behavior-y: none /* to avoid scroll bounce */
 }
 
+#scroll-instruction {
+  position: absolute;
+  z-index: 2000;
+  top: 20px; 
+  right: 20px; 
+  padding: 15px 20px;
+  color: white;
+  font-size: 1.5rem;
+  font-family: "Balthazar", "Michroma", sans-serif;
+  text-decoration: none;
+  transition: all 1s ease;
+}
+
 /* text elements */
 .text-container {
   z-index: 1000;

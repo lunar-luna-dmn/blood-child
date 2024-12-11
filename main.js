@@ -4,6 +4,32 @@ import ScrollTrigger from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger);
 
 document.addEventListener('DOMContentLoaded', () => {
+     // Modal function ==============================================
+     const infoButton = document.getElementById('infoButton');
+     console.log("info button grabbed")
+     const modal = document.getElementById('infoModal');
+     const closeButton = document.getElementById('closeButton');
+ 
+     // Open the modal when the info button is clicked
+     infoButton.addEventListener('click', (e) => {
+         console.log("about clicked");
+         e.preventDefault(); 
+         modal.style.display = 'block';
+     });
+ 
+     // Close the modal when the close button is clicked
+     closeButton.addEventListener('click', () => {
+         modal.style.display = 'none';
+     });
+ 
+     // Close the modal when clicking outside of the modal content
+     window.addEventListener('click', (event) => {
+         if (event.target === modal) {
+             modal.style.display = 'none';
+         }
+     });
+
+     
     // Initialize text states ====================================================
     const texts = [
         document.getElementById('text0'),
@@ -115,6 +141,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }, 10); //timeout delay (ms)
     }, { passive: false });
+
+
+   
 
 
     // Mouse gradient interaction ==============================================
