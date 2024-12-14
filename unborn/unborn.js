@@ -372,8 +372,8 @@ const cameraSteps = [
     // Step 4
     {
       x: -10,
-      y: 10,
-      z: 30
+      y: 5,
+      z: 20
     },
     // Step 5
     {
@@ -394,12 +394,8 @@ let scene2texts = [
 ];
 gsap.set(scene2texts, { opacity: 0, scale: 0.8 })
 
+// hide buttons initially
 const buttons = document.querySelectorAll('.outlined-button');
-// buttons.forEach(button => {
-//   button.style.visibility = 'hidden';
-//   button.style.opacity = '0';
-// });
-
 gsap.set(buttons, { opacity: 0 });
 
 // Scene 2 timeline
@@ -451,7 +447,7 @@ masterTimeline.to(camera.position, {
                         x: -0.2,
                         y: 0,
                         z: 0,
-                        duration: 6,
+                        duration: 4,
                         ease: "power2.inOut"
                     });
                 }
@@ -465,7 +461,7 @@ masterTimeline.to(camera.position, {
                 
                     gsap.to('.outlined-button', {
                       opacity: 1,
-                      duration: 1,
+                      duration: 2,
                       ease: "power2.inOut",
                       onComplete: function() {
                         buttons.forEach(button => {
@@ -473,7 +469,7 @@ masterTimeline.to(camera.position, {
                         });
                       }
                     });
-                  }, 1500);
+                  }, 1000);
                   } else {
                     buttons.forEach(button => {
                       button.style.visibility = 'hidden';

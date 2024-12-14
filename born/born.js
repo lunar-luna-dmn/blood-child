@@ -139,7 +139,6 @@ function init() {
 
     // EVENTS
     window.addEventListener( 'resize', onWindowResize );
-    console.log('resized');
 
     // WEB CAM
     setupWebcam();
@@ -289,7 +288,7 @@ function setupWheelControls() {
     wheelAdaptor.connect();
     
     let currentStep = 0;
-    const totalSteps = 13; // 13 texts, starting from text0
+    const totalSteps = 13; // 13 texts, starting from text0 to text12
 
     // set up texts array and initial state (14 texts, starting with text0)
     let texts = [];
@@ -458,7 +457,7 @@ function setupWheelControls() {
     ];
 
     const buttons = document.querySelectorAll('.outlined-button');
-    gsap.set(buttons, { opacity: 0 });
+    gsap.set(buttons, { opacity: 0, visibility: 'hidden' });
 
     wheelAdaptor.addEventListener('trigger', (e) => {
         if (e.y > 0 && currentStep < totalSteps - 1) { // Forward
@@ -468,6 +467,7 @@ function setupWheelControls() {
             currentStep--;
             animateToStep(currentStep);
         }
+        console.log(currentStep);
     });
 
     function animateToStep(step) {
@@ -524,28 +524,43 @@ function setupWheelControls() {
             });
         });
 
+        // hide scroll instruction after step 1
+        if (currentStep >= 1){
+            gsap.to('#scroll-instruction', {
+                opacity: 0,
+                duration: .5
+            })
+        } else {
+            gsap.to('#scroll-instruction', {
+                opacity: 1,
+                duration: .5
+            })
+        }
+
         // delay the buttons to fade in in last step
         if (currentStep === 12) {
             setTimeout(() => {
               buttons.forEach(button => {
                 button.style.visibility = 'visible';
+                button.style.cursor = 'pointer';
               });
           
               gsap.to('.outlined-button', {
                 opacity: 1,
                 duration: 2,
                 ease: "power2.inOut",
-                onComplete: function() {
-                  buttons.forEach(button => {
-                    button.style.cursor = 'pointer';
-                  });
-                }
+                // onComplete: function() {
+                //   buttons.forEach(button => {
+                //     button.style.cursor = 'pointer';
+                //   });
+                // }
               });
             }, 1500);
             } else {
               buttons.forEach(button => {
                 button.style.visibility = 'hidden';
                 button.style.cursor = 'default';
+                button.pointerEvents = 'none'; 
               });
             }
     }
