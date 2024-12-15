@@ -3,6 +3,16 @@ import ScrollTrigger from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger);
 
+// Background sound
+window.addEventListener('mousemove', () => {
+    const audio = document.getElementById('background-audio');
+    audio.muted = false;
+    // console.log("loaded")
+    audio.play().catch(error => {
+        console.error('Audio playback failed:', error);
+    });
+    });
+
 document.addEventListener('DOMContentLoaded', () => {
      // Modal function ==============================================
      const infoButton = document.getElementById('infoButton');

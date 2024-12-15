@@ -27,6 +27,16 @@ let time = 0;
 
 const clock = new THREE.Clock();
 
+// Background sound
+window.addEventListener('load', () => {
+    const audio = document.getElementById('background-audio');
+    // console.log("loaded")
+    audio.play().catch(error => {
+      console.error('Audio playback failed:', error);
+    });
+  });
+
+// Webcam setup
 function setupWebcam() {
     video = document.getElementById('video');
     
@@ -67,6 +77,7 @@ function setupWebcam() {
         });
 }
 
+// Initial setup
 function init() {
 
     container = document.getElementById( 'container' );
@@ -143,6 +154,10 @@ function init() {
     // WEB CAM
     setupWebcam();
 
+    // const audio = document.getElementById('background-audio');
+    // audio.play().catch(error => {
+    //   console.error('Audio playback failed:', error);
+    // });
 }
 
 init();
