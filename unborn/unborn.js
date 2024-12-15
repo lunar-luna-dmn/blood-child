@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-console.log("three.js loaded");
+// console.log("three.js loaded");
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
@@ -12,7 +12,17 @@ window.$ = window.jQuery = jQuery; // make jQuery available globally
 import { WheelAdaptor } from 'three-story-controls'; 
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
+// Background sound
+window.addEventListener('scroll', () => {
+  // console.log("scrolled");
+  const audio = document.getElementById('background-audio');
+  audio.muted = false;
+  audio.play().catch(error => {
+    console.error('Audio playback failed:', error);
+  });
+});
 
+//Mouse movement setup
 var Mathutils = {
     normalize: function($value, $min, $max) {
         return ($value - $min) / ($max - $min);
@@ -274,7 +284,7 @@ masterTimeline.to(tubePerc, {
     duration: 500,
     onUpdate: function() {
         cameraTargetPercentage = tubePerc.percent;
-        console.log("Scene 1");
+        // console.log("Scene 1");
         // console.log("tubePerc.percent: " + tubePerc.percent);
 
         // update texts based on tube percentage
@@ -429,7 +439,7 @@ masterTimeline.to(camera.position, {
               // WheelAdaptor
               let wheelAdaptor = new WheelAdaptor({ type: 'discrete' });
               wheelAdaptor.connect();
-              console.log('Scene 2 WheelAdaptor connected');
+              // console.log('Scene 2 WheelAdaptor connected');
 
               // define the function for wheelAdaptor animations
               function changeCameraAndText ()  {
@@ -489,10 +499,10 @@ masterTimeline.to(camera.position, {
                         scene2texts[scene2Step].style.transform = 'scale(1)';
                       }, 500);
                   },
-                  onComplete: function() {
-                    console.log(`Step ${scene2Step} completed`);
-                    console.log(`New camera position:`, camera.position);
-                  }
+                  // onComplete: function() {
+                  //   console.log(`Step ${scene2Step} completed`);
+                  //   console.log(`New camera position:`, camera.position);
+                  // }
                   });
               }
 
@@ -500,14 +510,14 @@ masterTimeline.to(camera.position, {
                   if (e.y > 0 && scene2Step < totalSteps) { //move forward
                       scene2Step++;
                       changeCameraAndText();
-                      console.log(`\n----- Moving forward to Step ${scene2Step} -----`);
-                      console.log(`Current camera position:`, camera.position);
+                      // console.log(`\n----- Moving forward to Step ${scene2Step} -----`);
+                      // console.log(`Current camera position:`, camera.position);
                   }
                   if (e.y < 0 && scene2Step > 0) { //move backward
                     scene2Step--;
                     changeCameraAndText();
-                    console.log(`\n----- Moving backward to Step ${scene2Step} -----`);
-                    console.log(`Current camera position:`, camera.position);
+                    // console.log(`\n----- Moving backward to Step ${scene2Step} -----`);
+                    // console.log(`Current camera position:`, camera.position);
                 }
           });
       }
